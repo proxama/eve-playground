@@ -21,6 +21,24 @@ DOMAIN = {
             },
         },
     },
+
+    # Example of a scoped resource
+    "projects": {
+        "url": "accounts/<regex('[a-f0-9]{24}'):owner>/projects",
+        "schema": {
+            "name": {
+                "type": "string",
+            },
+            "owner": {
+                "type": "objectid",
+                "data_relation": {
+                    "resource": "accounts",
+                    "field": "_id",
+                    "embeddable": True,
+                },
+            },
+        },
+    },
 }
 
 RESOURCE_METHODS = ["GET", "POST"]
